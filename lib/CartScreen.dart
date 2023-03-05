@@ -99,8 +99,6 @@ class _CartViewState extends State<CartView> {
                                             if (counter < 1) {
                                               counter--;
                                             }
-
-                                            print(counter);
                                           });
                                         },
                                         child: const Icon(
