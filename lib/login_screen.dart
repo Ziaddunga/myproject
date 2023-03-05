@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:myproject/Navigatorbar_screen.dart';
+import 'package:myproject/Signup.dart';
 
 class LoginScreen extends StatelessWidget {
   static const String screenRoute = 'Login Screen';
@@ -121,7 +123,7 @@ class LoginScreen extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12)),
                   onPressed: () {
-                    // Navigator.pushNamed(context, Navigationbar.screenRoute);
+                    Navigator.pushNamed(context, Navigationbar.screenRoute);
                   },
                   child: Text(
                     'Login',
@@ -143,7 +145,7 @@ class LoginScreen extends StatelessWidget {
                     ),
                     TextButton(
                       onPressed: () {
-                        // Navigator.pushNamed(context, SignupScreen.screenRoute);
+                        Navigator.pushNamed(context, SignupScreen.screenRoute);
                       },
                       child: Text(
                         "Register",

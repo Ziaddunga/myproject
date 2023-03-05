@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:get/get.dart';
+import 'package:myproject/cart_list.dart';
 import 'CartScreen.dart';
 import 'HomeScreen.dart';
 
@@ -40,79 +41,56 @@ class PsuDetailsScreen extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(
-              height: 33.0,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(
-                      20.0,
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(
+                height: 33.0,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(
+                        20.0,
+                      ),
+                    ),
+                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                    child: Image(
+                      width: 200.0,
+                      height: 200.0,
+                      image: NetworkImage(
+                        psuModel!.imageUrl,
+                      ),
                     ),
                   ),
-                  clipBehavior: Clip.antiAliasWithSaveLayer,
-                  child: Image(
-                    width: 200.0,
-                    height: 200.0,
-                    image: NetworkImage(
-                      psuModel!.imageUrl,
-                    ),
+                ],
+              ),
+              const SizedBox(
+                height: 50.1,
+              ),
+              Text(
+                psuModel!.data,
+                style: const TextStyle(
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.w300,
+                ),
+              ),
+              const Padding(
+                padding: EdgeInsets.symmetric(
+                  vertical: 23.0,
+                ),
+                child: Text(
+                  'Product Features',
+                  style: TextStyle(
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
-              ],
-            ),
-            const SizedBox(
-              height: 50.1,
-            ),
-            Text(
-              psuModel!.data,
-              style: const TextStyle(
-                fontSize: 16.0,
-                fontWeight: FontWeight.w300,
               ),
-            ),
-            const Padding(
-              padding: EdgeInsets.symmetric(
-                vertical: 23.0,
-              ),
-              child: Text(
-                'Product Features',
-                style: TextStyle(
-                  fontSize: 18.0,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-            ),
-            Row(
-              children: [
-                const CircleAvatar(
-                  radius: 5.0,
-                  backgroundColor: Colors.blue,
-                ),
-                const SizedBox(
-                  width: 10.0,
-                ),
-                Expanded(
-                  child: Text(
-                    psuModel!.details1,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                      fontSize: 16.0,
-                      fontWeight: FontWeight.w300,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10.0),
-              child: Row(
+              Row(
                 children: [
                   const CircleAvatar(
                     radius: 5.0,
@@ -123,7 +101,7 @@ class PsuDetailsScreen extends StatelessWidget {
                   ),
                   Expanded(
                     child: Text(
-                      psuModel!.details2,
+                      psuModel!.details1,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(
@@ -134,127 +112,155 @@ class PsuDetailsScreen extends StatelessWidget {
                   ),
                 ],
               ),
-            ),
-            Row(
-              children: [
-                const CircleAvatar(
-                  radius: 5.0,
-                  backgroundColor: Colors.blue,
-                ),
-                const SizedBox(
-                  width: 10.0,
-                ),
-                Expanded(
-                  child: Text(
-                    psuModel!.details3,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                      fontSize: 16.0,
-                      fontWeight: FontWeight.w300,
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 10.0),
+                child: Row(
+                  children: [
+                    const CircleAvatar(
+                      radius: 5.0,
+                      backgroundColor: Colors.blue,
                     ),
-                  ),
+                    const SizedBox(
+                      width: 10.0,
+                    ),
+                    Expanded(
+                      child: Text(
+                        psuModel!.details2,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.w300,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
-            // const SizedBox(
-            //   height: 10.0,
-            // ),
-            // Row(
-            //   children: [
-            //     const CircleAvatar(
-            //       radius: 5.0,
-            //       backgroundColor: Colors.blue,
-            //     ),
-            //     const SizedBox(
-            //       width: 10.0,
-            //     ),
-            //     Expanded(
-            //       child: Text(
-            //         psuModel!.details4,
-            //         maxLines: 2,
-            //         overflow: TextOverflow.ellipsis,
-            //         style: const TextStyle(
-            //           fontSize: 16.0,
-            //           fontWeight: FontWeight.w300,
-            //         ),
-            //       ),
-            //     ),
-            //   ],
-            // ),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                vertical: 25.0,
               ),
-              child: Row(
+              Row(
                 children: [
-                  const Icon(
-                    Icons.monetization_on_outlined,
+                  const CircleAvatar(
+                    radius: 5.0,
+                    backgroundColor: Colors.blue,
                   ),
                   const SizedBox(
-                    width: 5.0,
+                    width: 10.0,
                   ),
-                  Text(
-                    psuModel!.price,
-                    style: const TextStyle(
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.w500,
+                  Expanded(
+                    child: Text(
+                      psuModel!.details3,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.w300,
+                      ),
                     ),
                   ),
                 ],
               ),
-            ),
-            // Container(
-            //   width: double.infinity,
-            //   color: Colors.blue,
-            //   child: MaterialButton(
-            //     onPressed: ()
-            //     {
-            //
-            //     },
-            //     child: Row(
-            //       mainAxisAlignment: MainAxisAlignment.center,
-            //       children: const [
-            //         Icon(
-            //           Icons.add,
-            //           color: Colors.white,
-            //         ),
-            //         SizedBox(
-            //           width: 5.0,
-            //         ),
-            //         Text(
-            //           'Add Product to List',
-            //           style: TextStyle(
-            //               fontSize: 16.0,
-            //               color: Colors.white,
-            //             fontWeight: FontWeight.w400,
-            //           ),
-            //         ),
-            //       ],
-            //     ),
-            //   ),
-            // ),
-            MaterialButton(
-              minWidth: 350,
-              height: 50,
-              color: Colors.blue[900],
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12)),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => CartView()),
-                );
-              },
-              child: const Text(
-                'Add Product to List',
-                style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.white,
+              // const SizedBox(
+              //   height: 10.0,
+              // ),
+              // Row(
+              //   children: [
+              //     const CircleAvatar(
+              //       radius: 5.0,
+              //       backgroundColor: Colors.blue,
+              //     ),
+              //     const SizedBox(
+              //       width: 10.0,
+              //     ),
+              //     Expanded(
+              //       child: Text(
+              //         psuModel!.details4,
+              //         maxLines: 2,
+              //         overflow: TextOverflow.ellipsis,
+              //         style: const TextStyle(
+              //           fontSize: 16.0,
+              //           fontWeight: FontWeight.w300,
+              //         ),
+              //       ),
+              //     ),
+              //   ],
+              // ),
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  vertical: 25.0,
+                ),
+                child: Row(
+                  children: [
+                    const Icon(
+                      Icons.monetization_on_outlined,
+                    ),
+                    const SizedBox(
+                      width: 5.0,
+                    ),
+                    Text(
+                      psuModel!.price,
+                      style: const TextStyle(
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ],
                 ),
               ),
-            ),
-          ],
+              // Container(
+              //   width: double.infinity,
+              //   color: Colors.blue,
+              //   child: MaterialButton(
+              //     onPressed: ()
+              //     {
+              //
+              //     },
+              //     child: Row(
+              //       mainAxisAlignment: MainAxisAlignment.center,
+              //       children: const [
+              //         Icon(
+              //           Icons.add,
+              //           color: Colors.white,
+              //         ),
+              //         SizedBox(
+              //           width: 5.0,
+              //         ),
+              //         Text(
+              //           'Add Product to List',
+              //           style: TextStyle(
+              //               fontSize: 16.0,
+              //               color: Colors.white,
+              //             fontWeight: FontWeight.w400,
+              //           ),
+              //         ),
+              //       ],
+              //     ),
+              //   ),
+              // ),
+              MaterialButton(
+                minWidth: 350,
+                height: 50,
+                color: Colors.blue[900],
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12)),
+                onPressed: () {
+                  CartList.cartList.add(<String, String>{
+                    'name': psuModel!.name,
+                    'imageUrl': psuModel!.imageUrl
+                  });
+                  Get.to(
+                    () => CartView(),
+                  );
+                },
+                child: const Text(
+                  'Add Product to List',
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

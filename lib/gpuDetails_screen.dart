@@ -206,37 +206,7 @@ class GpuDetailsScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              // Container(
-              //   width: double.infinity,
-              //   color: Colors.blue,
-              //   child: MaterialButton(
-              //     onPressed: ()
-              //     {
-              //
-              //     },
-              //     child: Row(
-              //       mainAxisAlignment: MainAxisAlignment.center,
-              //       children: const [
-              //         Icon(
-              //           Icons.add,
-              //           color: Colors.white,
-              //         ),
-              //         SizedBox(
-              //           width: 5.0,
-              //         ),
-              //         Text(
-              //           'Add Product to List',
-              //           style: TextStyle(
-              //               fontSize: 16.0,
-              //               color: Colors.white,
-              //             fontWeight: FontWeight.w400,
-              //           ),
-              //         ),
-              //       ],
-              //     ),
-              //   ),
-              // ),
-              MaterialButton(
+               MaterialButton(
                 minWidth: 350,
                 height: 50,
                 color: Colors.blue[900],

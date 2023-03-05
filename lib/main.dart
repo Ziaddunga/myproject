@@ -28,25 +28,25 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Navigationbar(),
-      //   initialRoute: LoginScreen.screenRoute,
-      //   routes: {
-      //     Navigationbar.screenRoute: (context) => Navigationbar(),
-      //     CategoryScreen.screenRoute: (context) => CategoryScreen(),
-      //     CartView.screenRoute: (context) => CartView(),
-      //     HomeScreen.screenRoute: (context) => HomeScreen(),
-      //     UserScreen.screenRoute: (context) => UserScreen(),
-      // //    PinScreen.screenRoute: (context) => PinScreen(),
-      //     LoginScreen.screenRoute: (context) => LoginScreen(),
-      //     SignupScreen.screenRoute: (context) => SignupScreen(),
-      //     ForgotPasswordScreen.screenRoute: (context) => ForgotPasswordScreen(),
-      //     CpuViewAllScreen.screenRoute: (context) => CpuViewAllScreen(),
-      //     GpuViewAllScreen.screenRoute: (context) => GpuViewAllScreen(),
-      //     PsuViewAllScreen.screenRoute: (context) => PsuViewAllScreen(),
-      //     RamViewAllScreen.screenRoute: (context) => RamViewAllScreen(),
-      //     MotherBoardViewAllScreen.screenRoute: (context) =>
-      //         MotherBoardViewAllScreen(),
-      // },
+      home: LoginScreen(),
+      initialRoute: LoginScreen.screenRoute,
+      routes: {
+        Navigationbar.screenRoute: (context) => Navigationbar(),
+        CategoryScreen.screenRoute: (context) => CategoryScreen(),
+        CartView.screenRoute: (context) => CartView(),
+        HomeScreen.screenRoute: (context) => HomeScreen(),
+        UserScreen.screenRoute: (context) => UserScreen(),
+        //    PinScreen.screenRoute: (context) => PinScreen(),
+        LoginScreen.screenRoute: (context) => LoginScreen(),
+        SignupScreen.screenRoute: (context) => SignupScreen(),
+        ForgotPasswordScreen.screenRoute: (context) => ForgotPasswordScreen(),
+        CpuViewAllScreen.screenRoute: (context) => CpuViewAllScreen(),
+        GpuViewAllScreen.screenRoute: (context) => GpuViewAllScreen(),
+        PsuViewAllScreen.screenRoute: (context) => PsuViewAllScreen(),
+        RamViewAllScreen.screenRoute: (context) => RamViewAllScreen(),
+        MotherBoardViewAllScreen.screenRoute: (context) =>
+            MotherBoardViewAllScreen(),
+      },
     );
   }
 }

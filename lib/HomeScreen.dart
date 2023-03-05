@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myproject/psuDetails_screen.dart';
 import 'package:myproject/psuViewAll_screen.dart';
 import 'package:myproject/ramDetails_screen.dart';
+
 import 'package:myproject/ramViewAll_screen.dart';
 
 import 'cpuDetails_Screen.dart';
