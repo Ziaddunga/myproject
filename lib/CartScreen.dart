@@ -96,8 +96,11 @@ class _CartViewState extends State<CartView> {
                                       TextButton(
                                         onPressed: () {
                                           setState(() {
-                                            if (counter < 1) {
-                                              counter--;
+                                            if (counter > 0) {
+                                              --counter;
+                                            }
+                                            if (counter == 0) {
+                                              CartList.cartList.removeAt(index);
                                             }
                                           });
                                         },

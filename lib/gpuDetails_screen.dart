@@ -243,11 +243,6 @@ class GpuDetailsScreen extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12)),
                 onPressed: () {
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(builder: (context) => CartView()),
-                  // );
-
                   CartList.cartList.add(<String, String>{
                     'name': gpuModel!.name,
                     'imageUrl': gpuModel!.imageUrl
