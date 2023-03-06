@@ -1,14 +1,23 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:myproject/HomeScreen.dart';
+import 'package:myproject/login_screen.dart';
 
 class SignupScreen extends StatelessWidget {
   static const String screenRoute = 'Signup Screen';
-  var UsernameController = TextEditingController();
+  var usernameController = TextEditingController();
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
   var confirmPasswordController = TextEditingController();
 
+  final GlobalKey<FormState> _key = GlobalKey();
+
   @override
   Widget build(BuildContext context) {
+    const space = SizedBox(
+      height: 20,
+    );
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white.withOpacity(0),
@@ -18,7 +27,7 @@ class SignupScreen extends StatelessWidget {
           onPressed: () {
             // Navigator.pushNamed(context, LoginScreen.screenRoute);
           },
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back,
           ),
         ),
@@ -27,209 +36,117 @@ class SignupScreen extends StatelessWidget {
         padding: const EdgeInsets.all(20),
         child: SingleChildScrollView(
           physics: const NeverScrollableScrollPhysics(),
-          child: Column(
-            children: [
-              const SizedBox(
-                height: 100,
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    width: 310,
-                    child: TextFormField(
-                      controller: UsernameController,
-                      keyboardType: TextInputType.name,
-                      onFieldSubmitted: (String value) {
-                        print(value);
-                      },
-                      onChanged: (String value) {
-                        print(value);
-                      },
-                      decoration: InputDecoration(
-                        hintText: "Username",
-                        prefixIcon: const Icon(Icons.people),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                      ),
-                    ),
-                  ),
-                  // const SizedBox(
-                  //   width: 20.0,
-                  // ),
-                  // Container(
-                  //   width: 125.0,
-                  //   child: TextFormField(
-                  //     controller: lastNameController,
-                  //     keyboardType: TextInputType.name,
-                  //     onFieldSubmitted: (String value) {
-                  //       print(value);
-                  //     },
-                  //     onChanged: (String value) {
-                  //       print(value);
-                  //     },
-                  //     decoration: const InputDecoration(
-                  //       labelText: 'Last Name',
-                  //       border: OutlineInputBorder(),
-                  //     ),
-                  //   ),
-                  // ),
-                ],
-              ),
-              const SizedBox(
-                height: 20.0,
-              ),
-              Container(
-                width: 310,
-                child: TextFormField(
-                  controller: emailController,
-                  keyboardType: TextInputType.emailAddress,
-                  onFieldSubmitted: (String value) {
-                    print(value);
+          child: Form(
+            key: _key,
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 100,
+                ),
+                space,
+                _buildTextFormField(
+                  Icons.people,
+                  'user name',
+                  usernameController,
+                  TextInputType.name,
+                ),
+                space,
+                _buildTextFormField(
+                  Icons.email,
+                  'Email',
+                  emailController,
+                  TextInputType.emailAddress,
+                ),
+                space,
+                _buildTextFormField(
+                  Icons.lock,
+                  'Password',
+                  passwordController,
+                  TextInputType.visiblePassword,
+                  true,
+                ),
+                space,
+                _buildTextFormField(
+                  Icons.lock,
+                  'Confirm Password',
+                  confirmPasswordController,
+                  TextInputType.visiblePassword,
+                  true,
+                ),
+                space,
+                MaterialButton(
+                  minWidth: 310,
+                  height: 50,
+                  color: Colors.blue[900],
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12)),
+                  onPressed: () async {
+                    await signUp();
                   },
-                  onChanged: (String value) {
-                    print(value);
-                  },
-                  decoration: InputDecoration(
-                    hintText: "Email",
-                    prefixIcon: const Icon(Icons.mail),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
+                  child: const Text(
+                    'Sign Up',
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.white,
                     ),
                   ),
                 ),
-              ),
-              const SizedBox(
-                height: 20.0,
-              ),
-              // const SizedBox(
-              //   height: 20.0,
-              // ),
-              Container(
-                width: 310,
-                child: TextFormField(
-                  controller: passwordController,
-                  keyboardType: TextInputType.visiblePassword,
-                  obscureText: true,
-                  onFieldSubmitted: (String value) {
-                    print(value);
-                  },
-                  onChanged: (String value) {
-                    print(value);
-                  },
-                  decoration: InputDecoration(
-                    hintText: "Password",
-                    prefixIcon: const Icon(Icons.lock),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 20.0,
-              ),
-              Container(
-                width: 310,
-                child: TextFormField(
-                  controller: confirmPasswordController,
-                  keyboardType: TextInputType.visiblePassword,
-                  obscureText: true,
-                  onFieldSubmitted: (String value) {
-                    print(value);
-                  },
-                  onChanged: (String value) {
-                    print(value);
-                  },
-                  decoration: InputDecoration(
-                    hintText: "Password",
-                    prefixIcon: const Icon(Icons.lock),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 20.0,
-              ),
-              MaterialButton(
-                minWidth: 310,
-                height: 50,
-                color: Colors.blue[900],
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12)),
-                onPressed: () {
-                  //     Navigator.pushNamed(context, Navigationbar.screenRoute);
-                  // todo login
-                },
-                child: Text(
-                  'Signin',
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-              // const SizedBox(
-              //   height: 37.0,
-              // ),
-              // Container(
-              //   width: 270.0,
-              //   child: Row(
-              //     mainAxisAlignment: MainAxisAlignment.center,
-              //     children: [
-              //       Container(
-              //         width: 82.0,
-              //         height: 3.0,
-              //         color: Colors.grey[500],
-              //       ),
-              //       const Padding(
-              //         padding: EdgeInsets.symmetric(horizontal: 10.0),
-              //         child: Text(
-              //           'or continue with',
-              //           style: TextStyle(
-              //             fontSize: 12.0,
-              //             color: Colors.black,
-              //           ),
-              //         ),
-              //       ),
-              //       Container(
-              //         width: 82.0,
-              //         height: 3.0,
-              //         color: Colors.grey[500],
-              //       ),
-              //     ],
-              //   ),
-              // ),
-              // const SizedBox(
-              //   height: 20.0,
-              // ),
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.center,
-              //   children: [
-              //     IconButton(
-              //       onPressed: () {},
-              //       icon: const Icon(
-              //         Icons.facebook,
-              //       ),
-              //     ),
-              //     IconButton(
-              //       onPressed: () {},
-              //       icon: const Icon(
-              //         Icons.g_mobiledata,
-              //       ),
-              //     ),
-              //   ],
-              // ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
     );
+  }
+
+  Widget _buildTextFormField(iconData, title, controller, textType,
+      [obsecureText]) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: TextFormField(
+        controller: controller,
+        keyboardType: textType,
+        obscureText: obsecureText ?? false,
+        validator: (value) {
+          if (value!.isEmpty) {
+            return 'this field is required';
+          }
+          if (textType == TextInputType.emailAddress && !value.isEmail) {
+            return 'invalide email';
+          }
+          return null;
+        },
+        decoration: InputDecoration(
+          hintText: title,
+          prefixIcon: Icon(iconData),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Future<void> signUp() async {
+    if (!_key.currentState!.validate()) {
+      return;
+    }
+    try {
+      final response = await Dio(BaseOptions(
+        baseUrl: 'http://192.168.1.7:80/api',
+      )).post('/register', data: {
+        'name': usernameController.text,
+        'email': emailController.text,
+        'password': passwordController.text,
+        'password_confirmation': confirmPasswordController.text,
+      });
+
+      print("token: ${response.data}");
+      if (response.statusCode == 200) {
+        Get.to(() => LoginScreen());
+      }
+    } on DioError catch (e) {
+      print(e);
+    }
   }
 }

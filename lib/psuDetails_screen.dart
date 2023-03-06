@@ -159,31 +159,7 @@ class PsuDetailsScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              // const SizedBox(
-              //   height: 10.0,
-              // ),
-              // Row(
-              //   children: [
-              //     const CircleAvatar(
-              //       radius: 5.0,
-              //       backgroundColor: Colors.blue,
-              //     ),
-              //     const SizedBox(
-              //       width: 10.0,
-              //     ),
-              //     Expanded(
-              //       child: Text(
-              //         psuModel!.details4,
-              //         maxLines: 2,
-              //         overflow: TextOverflow.ellipsis,
-              //         style: const TextStyle(
-              //           fontSize: 16.0,
-              //           fontWeight: FontWeight.w300,
-              //         ),
-              //       ),
-              //     ),
-              //   ],
-              // ),
+              
               Padding(
                 padding: const EdgeInsets.symmetric(
                   vertical: 25.0,
@@ -206,36 +182,7 @@ class PsuDetailsScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              // Container(
-              //   width: double.infinity,
-              //   color: Colors.blue,
-              //   child: MaterialButton(
-              //     onPressed: ()
-              //     {
-              //
-              //     },
-              //     child: Row(
-              //       mainAxisAlignment: MainAxisAlignment.center,
-              //       children: const [
-              //         Icon(
-              //           Icons.add,
-              //           color: Colors.white,
-              //         ),
-              //         SizedBox(
-              //           width: 5.0,
-              //         ),
-              //         Text(
-              //           'Add Product to List',
-              //           style: TextStyle(
-              //               fontSize: 16.0,
-              //               color: Colors.white,
-              //             fontWeight: FontWeight.w400,
-              //           ),
-              //         ),
-              //       ],
-              //     ),
-              //   ),
-              // ),
+             
               MaterialButton(
                 minWidth: 350,
                 height: 50,
