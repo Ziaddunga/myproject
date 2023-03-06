@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:myproject/HomeScreen.dart';
 import 'package:myproject/Navigatorbar_screen.dart';
 import 'package:myproject/Signup.dart';
@@ -65,10 +66,10 @@ class LoginScreen extends StatelessWidget {
                     color: Colors.blue[900],
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12)),
-                    onPressed: () {
-                      Navigator.pushNamed(context, Navigationbar.screenRoute);
+                    onPressed: () async {
+                      await login();
                     },
-                    child: Text(
+                    child: const Text(
                       'Login',
                       style: TextStyle(
                         fontSize: 18,
@@ -76,13 +77,13 @@ class LoginScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10.0,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
+                      const Text(
                         "Don't you have an account?",
                       ),
                       TextButton(
@@ -134,7 +135,7 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-  Future<void> signUp() async {
+  Future<void> login() async {
     if (!_key.currentState!.validate()) {
       return;
     }
@@ -148,7 +149,8 @@ class LoginScreen extends StatelessWidget {
 
       print("token: ${response.data}");
       if (response.statusCode == 200) {
-        Get.to(() => const HomeScreen());
+        GetStorage().write('token', response.data['token']);
+        Get.off(() => Navigationbar());
       }
     } on DioError catch (e) {
       print(e);

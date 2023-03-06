@@ -6,8 +6,10 @@ import 'HomeScreen.dart';
 
 // ignore: must_be_immutable
 class GpuDetailsScreen extends StatelessWidget {
-  GpuDetailsScreen({Key? key, required this.gpuModel}) : super(key: key);
-  GpuModel? gpuModel;
+  GpuDetailsScreen({
+    Key? key,
+  }) : super(key: key);
+  GpuModel gpuModel = Get.arguments;
   @override
   Widget build(BuildContext context) {
     // int currentIndex = 0;
@@ -25,7 +27,7 @@ class GpuDetailsScreen extends StatelessWidget {
         ),
         titleSpacing: 50.0,
         title: Text(
-          gpuModel!.name,
+          gpuModel.name,
           style: const TextStyle(
             fontSize: 18.0,
           ),
@@ -62,7 +64,7 @@ class GpuDetailsScreen extends StatelessWidget {
                       width: 200.0,
                       height: 200.0,
                       image: NetworkImage(
-                        gpuModel!.imageUrl,
+                        gpuModel.imageUrl,
                       ),
                     ),
                   ),
@@ -72,7 +74,7 @@ class GpuDetailsScreen extends StatelessWidget {
                 height: 50.1,
               ),
               Text(
-                gpuModel!.data,
+                gpuModel.data,
                 style: const TextStyle(
                   fontSize: 16.0,
                   fontWeight: FontWeight.w300,
@@ -101,7 +103,7 @@ class GpuDetailsScreen extends StatelessWidget {
                   ),
                   Expanded(
                     child: Text(
-                      gpuModel!.details1,
+                      gpuModel.details1,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(
@@ -125,7 +127,7 @@ class GpuDetailsScreen extends StatelessWidget {
                     ),
                     Expanded(
                       child: Text(
-                        gpuModel!.details2,
+                        gpuModel.details2,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: const TextStyle(
@@ -148,7 +150,7 @@ class GpuDetailsScreen extends StatelessWidget {
                   ),
                   Expanded(
                     child: Text(
-                      gpuModel!.details3,
+                      gpuModel.details3,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(
@@ -173,7 +175,7 @@ class GpuDetailsScreen extends StatelessWidget {
                   ),
                   Expanded(
                     child: Text(
-                      gpuModel!.details4,
+                      gpuModel.details4,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(
@@ -197,7 +199,7 @@ class GpuDetailsScreen extends StatelessWidget {
                       width: 5.0,
                     ),
                     Text(
-                      gpuModel!.price,
+                      gpuModel.price,
                       style: const TextStyle(
                         fontSize: 18.0,
                         fontWeight: FontWeight.w500,
@@ -206,7 +208,7 @@ class GpuDetailsScreen extends StatelessWidget {
                   ],
                 ),
               ),
-               MaterialButton(
+              MaterialButton(
                 minWidth: 350,
                 height: 50,
                 color: Colors.blue[900],
@@ -214,8 +216,8 @@ class GpuDetailsScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12)),
                 onPressed: () {
                   CartList.cartList.add(<String, String>{
-                    'name': gpuModel!.name,
-                    'imageUrl': gpuModel!.imageUrl
+                    'name': gpuModel.name,
+                    'imageUrl': gpuModel.imageUrl
                   });
                   Get.to(
                     () => CartView(),

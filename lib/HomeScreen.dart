@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:myproject/psuDetails_screen.dart';
 import 'package:myproject/psuViewAll_screen.dart';
 import 'package:myproject/ramDetails_screen.dart';
@@ -1105,13 +1106,7 @@ class _HomeScreenState extends State<HomeScreen> {
   // 3. add item to list
   Widget buildCpuItem(CpuModel processors) => MaterialButton(
         onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => CpuDetailsScreen(
-                      cpuModel: processors,
-                    )),
-          );
+          Get.to(() => CpuDetailsScreen(), arguments: processors);
         },
         child: SizedBox(
           width: 135.0,
@@ -1175,13 +1170,7 @@ class _HomeScreenState extends State<HomeScreen> {
       );
   Widget buildMotherBoardItem(MotherBoardModel motherBoard) => MaterialButton(
         onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => MotherBoardDetailsScreen(
-                      motherBoardModel: motherBoard,
-                    )),
-          );
+          Get.to(() => MotherBoardDetailsScreen(), arguments: motherBoard);
         },
         child: SizedBox(
           width: 135.0,
@@ -1245,13 +1234,7 @@ class _HomeScreenState extends State<HomeScreen> {
       );
   Widget buildRamItem(RamModel ram) => MaterialButton(
         onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => RamDetailsScreen(
-                      ramModel: ram,
-                    )),
-          );
+          Get.to(() => RamDetailsScreen(), arguments: ram);
         },
         child: SizedBox(
           width: 135.0,
@@ -1315,13 +1298,7 @@ class _HomeScreenState extends State<HomeScreen> {
       );
   Widget buildPsuItem(PsuModel psu) => MaterialButton(
         onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => PsuDetailsScreen(
-                      psuModel: psu,
-                    )),
-          );
+          Get.to(() => PsuDetailsScreen(), arguments: psu);
         },
         child: SizedBox(
           width: 135.0,
@@ -1385,13 +1362,7 @@ class _HomeScreenState extends State<HomeScreen> {
       );
   Widget buildGpuItem(GpuModel gpu) => MaterialButton(
         onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => GpuDetailsScreen(
-                      gpuModel: gpu,
-                    )),
-          );
+          Get.to(() => GpuDetailsScreen(), arguments: gpu);
         },
         child: SizedBox(
           width: 135.0,

@@ -7,9 +7,10 @@ import 'HomeScreen.dart';
 
 // ignore: must_be_immutable
 class MotherBoardDetailsScreen extends StatelessWidget {
-  MotherBoardDetailsScreen({Key? key, required this.motherBoardModel})
-      : super(key: key);
-  MotherBoardModel? motherBoardModel;
+  MotherBoardDetailsScreen({
+    Key? key,
+  }) : super(key: key);
+  MotherBoardModel motherBoardModel = Get.arguments;
   @override
   Widget build(BuildContext context) {
     // int currentIndex = 0;
@@ -27,7 +28,7 @@ class MotherBoardDetailsScreen extends StatelessWidget {
         ),
         titleSpacing: 50.0,
         title: Text(
-          motherBoardModel!.name,
+          motherBoardModel.name,
           style: const TextStyle(
             fontSize: 18.0,
           ),
@@ -64,7 +65,7 @@ class MotherBoardDetailsScreen extends StatelessWidget {
                       width: 200.0,
                       height: 200.0,
                       image: NetworkImage(
-                        motherBoardModel!.imageUrl,
+                        motherBoardModel.imageUrl,
                       ),
                     ),
                   ),
@@ -74,7 +75,7 @@ class MotherBoardDetailsScreen extends StatelessWidget {
                 height: 50.1,
               ),
               Text(
-                motherBoardModel!.data,
+                motherBoardModel.data,
                 style: const TextStyle(
                   fontSize: 16.0,
                   fontWeight: FontWeight.w300,
@@ -103,7 +104,7 @@ class MotherBoardDetailsScreen extends StatelessWidget {
                   ),
                   Expanded(
                     child: Text(
-                      motherBoardModel!.details1,
+                      motherBoardModel.details1,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(
@@ -127,7 +128,7 @@ class MotherBoardDetailsScreen extends StatelessWidget {
                     ),
                     Expanded(
                       child: Text(
-                        motherBoardModel!.details2,
+                        motherBoardModel.details2,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: const TextStyle(
@@ -150,7 +151,7 @@ class MotherBoardDetailsScreen extends StatelessWidget {
                   ),
                   Expanded(
                     child: Text(
-                      motherBoardModel!.details3,
+                      motherBoardModel.details3,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(
@@ -199,7 +200,7 @@ class MotherBoardDetailsScreen extends StatelessWidget {
                       width: 5.0,
                     ),
                     Text(
-                      motherBoardModel!.price,
+                      motherBoardModel.price,
                       style: const TextStyle(
                         fontSize: 18.0,
                         fontWeight: FontWeight.w500,
@@ -246,8 +247,8 @@ class MotherBoardDetailsScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12)),
                 onPressed: () {
                   CartList.cartList.add(<String, String>{
-                    'name': motherBoardModel!.name,
-                    'imageUrl': motherBoardModel!.imageUrl
+                    'name': motherBoardModel.name,
+                    'imageUrl': motherBoardModel.imageUrl
                   });
                   Get.to(
                     () => CartView(),

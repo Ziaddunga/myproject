@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:myproject/ramDetails_screen.dart';
 
 class RamModel {
   final String imageUrl;
@@ -151,7 +153,10 @@ class RamViewAllScreen extends StatelessWidget {
               ListView.separated(
                 physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
-                itemBuilder: (context, index) => buildRamItem(ram[index]),
+                itemBuilder: (context, index) => InkWell(
+                    onTap: () =>
+                        Get.to(() => RamDetailsScreen(), arguments: ram),
+                    child: buildRamItem(ram[index])),
                 separatorBuilder: (context, index) => const SizedBox(
                   height: 25.0,
                 ),

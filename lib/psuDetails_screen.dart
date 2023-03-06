@@ -6,8 +6,10 @@ import 'HomeScreen.dart';
 
 // ignore: must_be_immutable
 class PsuDetailsScreen extends StatelessWidget {
-  PsuDetailsScreen({Key? key, required this.psuModel}) : super(key: key);
-  PsuModel? psuModel;
+  PsuDetailsScreen({
+    Key? key,
+  }) : super(key: key);
+  PsuModel psuModel = Get.arguments;
   @override
   Widget build(BuildContext context) {
     // int currentIndex = 0;
@@ -25,7 +27,7 @@ class PsuDetailsScreen extends StatelessWidget {
         ),
         titleSpacing: 50.0,
         title: Text(
-          psuModel!.name,
+          psuModel.name,
           style: const TextStyle(
             fontSize: 18.0,
           ),
@@ -62,7 +64,7 @@ class PsuDetailsScreen extends StatelessWidget {
                       width: 200.0,
                       height: 200.0,
                       image: NetworkImage(
-                        psuModel!.imageUrl,
+                        psuModel.imageUrl,
                       ),
                     ),
                   ),
@@ -72,7 +74,7 @@ class PsuDetailsScreen extends StatelessWidget {
                 height: 50.1,
               ),
               Text(
-                psuModel!.data,
+                psuModel.data,
                 style: const TextStyle(
                   fontSize: 16.0,
                   fontWeight: FontWeight.w300,
@@ -101,7 +103,7 @@ class PsuDetailsScreen extends StatelessWidget {
                   ),
                   Expanded(
                     child: Text(
-                      psuModel!.details1,
+                      psuModel.details1,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(
@@ -125,7 +127,7 @@ class PsuDetailsScreen extends StatelessWidget {
                     ),
                     Expanded(
                       child: Text(
-                        psuModel!.details2,
+                        psuModel.details2,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: const TextStyle(
@@ -148,7 +150,7 @@ class PsuDetailsScreen extends StatelessWidget {
                   ),
                   Expanded(
                     child: Text(
-                      psuModel!.details3,
+                      psuModel.details3,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(
@@ -159,7 +161,6 @@ class PsuDetailsScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              
               Padding(
                 padding: const EdgeInsets.symmetric(
                   vertical: 25.0,
@@ -173,7 +174,7 @@ class PsuDetailsScreen extends StatelessWidget {
                       width: 5.0,
                     ),
                     Text(
-                      psuModel!.price,
+                      psuModel.price,
                       style: const TextStyle(
                         fontSize: 18.0,
                         fontWeight: FontWeight.w500,
@@ -182,7 +183,6 @@ class PsuDetailsScreen extends StatelessWidget {
                   ],
                 ),
               ),
-             
               MaterialButton(
                 minWidth: 350,
                 height: 50,
@@ -191,8 +191,8 @@ class PsuDetailsScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12)),
                 onPressed: () {
                   CartList.cartList.add(<String, String>{
-                    'name': psuModel!.name,
-                    'imageUrl': psuModel!.imageUrl
+                    'name': psuModel.name,
+                    'imageUrl': psuModel.imageUrl
                   });
                   Get.to(
                     () => CartView(),

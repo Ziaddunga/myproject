@@ -8,8 +8,10 @@ import 'HomeScreen.dart';
 
 // ignore: must_be_immutable
 class CpuDetailsScreen extends StatelessWidget {
-  CpuDetailsScreen({Key? key, required this.cpuModel}) : super(key: key);
-  CpuModel? cpuModel;
+  CpuDetailsScreen({
+    Key? key,
+  }) : super(key: key);
+  CpuModel cpuModel = Get.arguments;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +30,7 @@ class CpuDetailsScreen extends StatelessWidget {
         ),
         titleSpacing: 50.0,
         title: Text(
-          cpuModel!.name,
+          cpuModel.name,
           style: const TextStyle(
             fontSize: 18.0,
           ),
@@ -65,7 +67,7 @@ class CpuDetailsScreen extends StatelessWidget {
                       width: 200.0,
                       height: 200.0,
                       image: NetworkImage(
-                        cpuModel!.imageUrl,
+                        cpuModel.imageUrl,
                       ),
                     ),
                   ),
@@ -75,7 +77,7 @@ class CpuDetailsScreen extends StatelessWidget {
                 height: 50.1,
               ),
               Text(
-                cpuModel!.data,
+                cpuModel.data,
                 style: const TextStyle(
                   fontSize: 16.0,
                   fontWeight: FontWeight.w300,
@@ -104,7 +106,7 @@ class CpuDetailsScreen extends StatelessWidget {
                   ),
                   Expanded(
                     child: Text(
-                      cpuModel!.details1,
+                      cpuModel.details1,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(
@@ -128,7 +130,7 @@ class CpuDetailsScreen extends StatelessWidget {
                     ),
                     Expanded(
                       child: Text(
-                        cpuModel!.details2,
+                        cpuModel.details2,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: const TextStyle(
@@ -151,7 +153,7 @@ class CpuDetailsScreen extends StatelessWidget {
                   ),
                   Expanded(
                     child: Text(
-                      cpuModel!.details3,
+                      cpuModel.details3,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(
@@ -176,7 +178,7 @@ class CpuDetailsScreen extends StatelessWidget {
                   ),
                   Expanded(
                     child: Text(
-                      cpuModel!.details4,
+                      cpuModel.details4,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(
@@ -200,7 +202,7 @@ class CpuDetailsScreen extends StatelessWidget {
                       width: 5.0,
                     ),
                     Text(
-                      cpuModel!.price,
+                      cpuModel.price,
                       style: const TextStyle(
                         fontSize: 18.0,
                         fontWeight: FontWeight.w500,
@@ -217,8 +219,8 @@ class CpuDetailsScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12)),
                 onPressed: () {
                   CartList.cartList.add(<String, String>{
-                    'name': cpuModel!.name,
-                    'imageUrl': cpuModel!.imageUrl
+                    'name': cpuModel.name,
+                    'imageUrl': cpuModel.imageUrl
                   });
                   Get.to(
                     () => CartView(),

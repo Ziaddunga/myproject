@@ -6,8 +6,10 @@ import 'HomeScreen.dart';
 
 // ignore: must_be_immutable
 class RamDetailsScreen extends StatelessWidget {
-  RamDetailsScreen({Key? key, required this.ramModel}) : super(key: key);
-  RamModel? ramModel;
+  RamDetailsScreen({
+    Key? key,
+  }) : super(key: key);
+  RamModel ramModel = Get.arguments;
   @override
   Widget build(BuildContext context) {
     // int currentIndex = 0;
@@ -25,7 +27,7 @@ class RamDetailsScreen extends StatelessWidget {
         ),
         titleSpacing: 50.0,
         title: Text(
-          ramModel!.name,
+          ramModel.name,
           style: const TextStyle(
             fontSize: 18.0,
           ),
@@ -62,7 +64,7 @@ class RamDetailsScreen extends StatelessWidget {
                       width: 200.0,
                       height: 200.0,
                       image: NetworkImage(
-                        ramModel!.imageUrl,
+                        ramModel.imageUrl,
                       ),
                     ),
                   ),
@@ -72,7 +74,7 @@ class RamDetailsScreen extends StatelessWidget {
                 height: 50.1,
               ),
               Text(
-                ramModel!.data,
+                ramModel.data,
                 style: const TextStyle(
                   fontSize: 16.0,
                   fontWeight: FontWeight.w300,
@@ -101,7 +103,7 @@ class RamDetailsScreen extends StatelessWidget {
                   ),
                   Expanded(
                     child: Text(
-                      ramModel!.details1,
+                      ramModel.details1,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(
@@ -125,7 +127,7 @@ class RamDetailsScreen extends StatelessWidget {
                     ),
                     Expanded(
                       child: Text(
-                        ramModel!.details2,
+                        ramModel.details2,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: const TextStyle(
@@ -148,7 +150,7 @@ class RamDetailsScreen extends StatelessWidget {
                   ),
                   Expanded(
                     child: Text(
-                      ramModel!.details3,
+                      ramModel.details3,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(
@@ -173,7 +175,7 @@ class RamDetailsScreen extends StatelessWidget {
                   ),
                   Expanded(
                     child: Text(
-                      ramModel!.details4,
+                      ramModel.details4,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(
@@ -197,7 +199,7 @@ class RamDetailsScreen extends StatelessWidget {
                       width: 5.0,
                     ),
                     Text(
-                      ramModel!.price,
+                      ramModel.price,
                       style: const TextStyle(
                         fontSize: 18.0,
                         fontWeight: FontWeight.w500,
@@ -214,8 +216,8 @@ class RamDetailsScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12)),
                 onPressed: () {
                   CartList.cartList.add(<String, String>{
-                    'name': ramModel!.name,
-                    'imageUrl': ramModel!.imageUrl
+                    'name': ramModel.name,
+                    'imageUrl': ramModel.imageUrl
                   });
                   Get.to(
                     () => CartView(),

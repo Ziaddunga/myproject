@@ -29,7 +29,9 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       home: LoginScreen(),
-      initialRoute: LoginScreen.screenRoute,
+      initialRoute: GetStorage().read('token').toString().isNotEmpty
+          ? Navigationbar.screenRoute
+          : LoginScreen.screenRoute,
       routes: {
         Navigationbar.screenRoute: (context) => Navigationbar(),
         CategoryScreen.screenRoute: (context) => CategoryScreen(),

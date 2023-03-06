@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:myproject/gpuDetails_screen.dart';
 
 class GpuModel {
   final String imageUrl;
@@ -133,7 +135,10 @@ class GpuViewAllScreen extends StatelessWidget {
               ListView.separated(
                 physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
-                itemBuilder: (context, index) => buildGpuItem(gpu[index]),
+                itemBuilder: (context, index) => InkWell(
+                    onTap: () =>
+                        Get.to(() => GpuDetailsScreen(), arguments: gpu[index]),
+                    child: buildGpuItem(gpu[index])),
                 separatorBuilder: (context, index) => const SizedBox(
                   height: 25.0,
                 ),

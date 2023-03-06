@@ -24,15 +24,6 @@ class _CartViewState extends State<CartView> {
         backgroundColor: Colors.white.withOpacity(0),
         title: const Text("Collections"),
         elevation: 0.0,
-        leading: IconButton(
-          color: Colors.blue[900],
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: const Icon(
-            Icons.arrow_back,
-          ),
-        ),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),

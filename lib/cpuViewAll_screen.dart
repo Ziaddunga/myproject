@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:myproject/cpuDetails_Screen.dart';
 
 class CpuModel {
   final String imageUrl;
@@ -288,8 +290,10 @@ class CpuViewAllScreen extends StatelessWidget {
               ListView.separated(
                 physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
-                itemBuilder: (context, index) =>
-                    buildCpuItem(processors[index]),
+                itemBuilder: (context, index) => InkWell(
+                    onTap: () => Get.to(() => CpuDetailsScreen(),
+                        arguments: processors[index]),
+                    child: buildCpuItem(processors[index])),
                 separatorBuilder: (context, index) => const SizedBox(
                   height: 25.0,
                 ),
