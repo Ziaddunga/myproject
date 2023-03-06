@@ -133,7 +133,7 @@ class SignupScreen extends StatelessWidget {
     }
     try {
       final response = await Dio(BaseOptions(
-        baseUrl: 'http://192.168.1.7:80/api',
+        baseUrl: 'http://YOUR_IP_ADRESS:80/api',
       )).post('/register', data: {
         'name': usernameController.text,
         'email': emailController.text,

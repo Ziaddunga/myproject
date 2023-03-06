@@ -141,7 +141,7 @@ class LoginScreen extends StatelessWidget {
     }
     try {
       final response = await Dio(BaseOptions(
-        baseUrl: 'http://192.168.1.7:80/api',
+        baseUrl: 'http://YOUR_IP_ADRESS:80/api',
       )).post('/login', data: {
         'email': emailController.text,
         'password': passwordController.text,
