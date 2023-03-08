@@ -1,4 +1,3 @@
-
 class CartList {
-  static List<Map<String, String>> cartList = [];
+  static List<Map<String, dynamic>> cartList = [];
 }

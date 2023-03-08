@@ -245,9 +245,10 @@ class MotherBoardDetailsScreen extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12)),
                 onPressed: () {
-                  CartList.cartList.add(<String, String>{
+                  CartList.cartList.add(<String, dynamic>{
                     'name': motherBoardModel.name,
-                    'imageUrl': motherBoardModel.imageUrl
+                    'imageUrl': motherBoardModel.imageUrl,
+                    'counter': 1
                   });
                   Get.to(
                     () => CartView(),

@@ -217,9 +217,10 @@ class CpuDetailsScreen extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12)),
                 onPressed: () {
-                  CartList.cartList.add(<String, String>{
+                  CartList.cartList.add(<String, dynamic>{
                     'name': cpuModel.name,
-                    'imageUrl': cpuModel.imageUrl
+                    'imageUrl': cpuModel.imageUrl,
+                    'counter': 1
                   });
                   Get.to(
                     () => CartView(),

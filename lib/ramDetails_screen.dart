@@ -214,9 +214,10 @@ class RamDetailsScreen extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12)),
                 onPressed: () {
-                  CartList.cartList.add(<String, String>{
+                  CartList.cartList.add(<String, dynamic>{
                     'name': ramModel.name,
-                    'imageUrl': ramModel.imageUrl
+                    'imageUrl': ramModel.imageUrl,
+                    'counter': 1
                   });
                   Get.to(
                     () => CartView(),

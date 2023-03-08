@@ -14,7 +14,7 @@ class CartView extends StatefulWidget {
 
 class _CartViewState extends State<CartView> {
   // CartList cartList = CartList.instance();
-  Map<String, String> product = {};
+  Map<String, dynamic> product = {};
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +33,7 @@ class _CartViewState extends State<CartView> {
                   itemCount: CartList.cartList.length,
                   itemBuilder: (_, index) {
                     product = CartList.cartList[index];
-                    int counter = 1;
+
                     return Row(
                       children: [
                         Container(
@@ -63,10 +63,12 @@ class _CartViewState extends State<CartView> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 SizedBox(
+                                  width: 300,
                                   child: Text(
                                     /*'Intel Core i5-11600KF Desktop Processor 6 Cores up to 4.9 GHz Unlocked LGA1200 (Intel 500 Series & Select 400 Series Chipset) 125W'*/
                                     product['name']!,
                                     maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
                                     style: const TextStyle(
                                       fontSize: 15.0,
                                       //fontWeight: FontWeight.w300,
@@ -79,10 +81,18 @@ class _CartViewState extends State<CartView> {
                                     TextButton(
                                       onPressed: () {
                                         setState(() {
-                                          if (counter > 0) {
-                                            --counter;
+                                          if (int.parse(product['counter']
+                                                  .toString()) >
+                                              0) {
+                                            product['counter'] = (int.parse(
+                                                        product['counter']
+                                                            .toString()) -
+                                                    1)
+                                                .toString();
                                           }
-                                          if (counter == 0) {
+                                          if (int.parse(product['counter']
+                                                  .toString()) ==
+                                              0) {
                                             CartList.cartList.removeAt(index);
                                           }
                                         });
@@ -96,7 +106,7 @@ class _CartViewState extends State<CartView> {
                                         horizontal: 5.0,
                                       ),
                                       child: Text(
-                                        '$counter',
+                                        '${product['counter']}',
                                         style: const TextStyle(
                                           fontSize: 18.0,
                                           fontWeight: FontWeight.w900,
@@ -106,8 +116,11 @@ class _CartViewState extends State<CartView> {
                                     TextButton(
                                       onPressed: () {
                                         setState(() {
-                                          counter++;
-                                          print(counter);
+                                          product['counter'] = (int.parse(
+                                                      product['counter']
+                                                          .toString()) +
+                                                  1)
+                                              .toString();
                                         });
                                       },
                                       child: const Icon(

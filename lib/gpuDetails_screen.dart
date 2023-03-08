@@ -214,9 +214,10 @@ class GpuDetailsScreen extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12)),
                 onPressed: () {
-                  CartList.cartList.add(<String, String>{
+                  CartList.cartList.add(<String, dynamic>{
                     'name': gpuModel.name,
-                    'imageUrl': gpuModel.imageUrl
+                    'imageUrl': gpuModel.imageUrl,
+                    'counter': 1
                   });
                   Get.to(
                     () => CartView(),
