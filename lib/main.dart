@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:myproject/psuViewAll_screen.dart';
 import 'package:myproject/ramViewAll_screen.dart';
+import 'package:responsive_framework/responsive_wrapper.dart';
 import 'CartScreen.dart';
 import 'Catigory_screen.dart';
 import 'HomeScreen.dart';
@@ -28,12 +29,21 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginScreen(),
+      builder: (_, child) => ResponsiveWrapper.builder(child,
+          maxWidth: 1200,
+          minWidth: 480,
+          defaultScale: true,
+          breakpoints: [
+            ResponsiveBreakpoint.resize(480, name: MOBILE),
+            ResponsiveBreakpoint.autoScale(800, name: TABLET),
+            ResponsiveBreakpoint.resize(1000, name: DESKTOP),
+          ],
+          background: Container(color: Color(0xFFF5F5F5))),
       initialRoute: GetStorage().read('token').toString().isNotEmpty
-          ? Navigationbar.screenRoute
+          ? bottomNavigation.screenRoute
           : LoginScreen.screenRoute,
       routes: {
-        Navigationbar.screenRoute: (context) => Navigationbar(),
+        bottomNavigation.screenRoute: (context) => bottomNavigation(),
         CategoryScreen.screenRoute: (context) => CategoryScreen(),
         CartView.screenRoute: (context) => CartView(),
         HomeScreen.screenRoute: (context) => HomeScreen(),

@@ -28,121 +28,114 @@ class _CartViewState extends State<CartView> {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            SizedBox(
-              height: 500,
+            Expanded(
               child: ListView.builder(
                   itemCount: CartList.cartList.length,
                   itemBuilder: (_, index) {
                     product = CartList.cartList[index];
-                    return SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(
-                                20.0,
-                              ),
-                            ),
-                            clipBehavior: Clip.antiAliasWithSaveLayer,
-                            child: Image(
-                              width: 80.0,
-                              height: 80.0,
-                              image: NetworkImage(
-                                // cpuModel!.imageUrl,
-                                /* 'https://m.media-amazon.com/images/I/41hE091wSLL._SL500_.jpg'*/
-                                product['imageUrl']!,
-                              ),
+                    return Row(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(
+                              20.0,
                             ),
                           ),
-                          const SizedBox(
-                            width: 17.7,
+                          clipBehavior: Clip.antiAliasWithSaveLayer,
+                          child: Image(
+                            width: 80.0,
+                            height: 80.0,
+                            image: NetworkImage(
+                              // cpuModel!.imageUrl,
+                              /* 'https://m.media-amazon.com/images/I/41hE091wSLL._SL500_.jpg'*/
+                              product['imageUrl']!,
+                            ),
                           ),
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  SizedBox(
-                                    width: 60,
-                                    child: Text(
-                                      /*'Intel Core i5-11600KF Desktop Processor 6 Cores up to 4.9 GHz Unlocked LGA1200 (Intel 500 Series & Select 400 Series Chipset) 125W'*/
-                                      product['name']!,
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
-                                      style: const TextStyle(
-                                        fontSize: 15.0,
-                                        //fontWeight: FontWeight.w300,
-                                      ),
+                        ),
+                        const SizedBox(
+                          width: 40,
+                        ),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SizedBox(
+                                  child: Text(
+                                    /*'Intel Core i5-11600KF Desktop Processor 6 Cores up to 4.9 GHz Unlocked LGA1200 (Intel 500 Series & Select 400 Series Chipset) 125W'*/
+                                    product['name']!,
+                                    maxLines: 1,
+                                    style: const TextStyle(
+                                      fontSize: 15.0,
+                                      //fontWeight: FontWeight.w300,
                                     ),
                                   ),
-                                  const SizedBox(height: 0.0),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      TextButton(
-                                        onPressed: () {
-                                          setState(() {
-                                            if (counter > 0) {
-                                              --counter;
-                                            }
-                                            if (counter == 0) {
-                                              CartList.cartList.removeAt(index);
-                                            }
-                                          });
-                                        },
-                                        child: const Icon(
-                                          Icons.remove,
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    TextButton(
+                                      onPressed: () {
+                                        setState(() {
+                                          if (counter > 0) {
+                                            --counter;
+                                          }
+                                          if (counter == 0) {
+                                            CartList.cartList.removeAt(index);
+                                          }
+                                        });
+                                      },
+                                      child: const Icon(
+                                        Icons.remove,
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 5.0,
+                                      ),
+                                      child: Text(
+                                        '$counter',
+                                        style: const TextStyle(
+                                          fontSize: 18.0,
+                                          fontWeight: FontWeight.w900,
                                         ),
                                       ),
-                                      Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                          horizontal: 5.0,
-                                        ),
-                                        child: Text(
-                                          '$counter',
-                                          style: const TextStyle(
-                                            fontSize: 18.0,
-                                            fontWeight: FontWeight.w900,
-                                          ),
-                                        ),
+                                    ),
+                                    TextButton(
+                                      onPressed: () {
+                                        setState(() {
+                                          counter++;
+                                          print(counter);
+                                        });
+                                      },
+                                      child: const Icon(
+                                        Icons.add,
                                       ),
-                                      TextButton(
-                                        onPressed: () {
-                                          setState(() {
-                                            counter++;
-                                            print(counter);
-                                          });
-                                        },
-                                        child: const Icon(
-                                          Icons.add,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                              CircleAvatar(
-                                backgroundColor: Colors.white.withOpacity(0.1),
-                                child: IconButton(
-                                  onPressed: () {
-                                    setState(() {
-                                      CartList.cartList.removeAt(index);
-                                    });
-                                  },
-                                  icon: const Icon(
-                                    Icons.delete_outline,
-                                    color: Colors.blue,
-                                  ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            CircleAvatar(
+                              backgroundColor: Colors.white.withOpacity(0.1),
+                              child: IconButton(
+                                onPressed: () {
+                                  setState(() {
+                                    CartList.cartList.removeAt(index);
+                                  });
+                                },
+                                icon: const Icon(
+                                  Icons.delete_outline,
+                                  color: Colors.blue,
                                 ),
                               ),
-                            ],
-                          ),
-                        ],
-                      ),
+                            ),
+                          ],
+                        ),
+                      ],
                     );
                   }),
             ),
@@ -164,6 +157,9 @@ class _CartViewState extends State<CartView> {
                 ),
               ),
             ),
+            const SizedBox(
+              height: 20,
+            )
           ],
         ),
       ),

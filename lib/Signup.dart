@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:myproject/HomeScreen.dart';
 import 'package:myproject/login_screen.dart';
 
+import 'Navigatorbar_screen.dart';
+
 class SignupScreen extends StatelessWidget {
   static const String screenRoute = 'Signup Screen';
   var usernameController = TextEditingController();
@@ -133,7 +135,7 @@ class SignupScreen extends StatelessWidget {
     }
     try {
       final response = await Dio(BaseOptions(
-        baseUrl: 'http://YOUR_IP_ADRESS:80/api',
+        baseUrl: 'http://192.168.1.8:80/api',
       )).post('/register', data: {
         'name': usernameController.text,
         'email': emailController.text,
@@ -142,8 +144,8 @@ class SignupScreen extends StatelessWidget {
       });
 
       print("token: ${response.data}");
-      if (response.statusCode == 200) {
-        Get.to(() => LoginScreen());
+      if (response.statusCode == 201) {
+        Get.to(() => bottomNavigation());
       }
     } on DioError catch (e) {
       print(e);

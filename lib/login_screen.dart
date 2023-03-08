@@ -141,7 +141,7 @@ class LoginScreen extends StatelessWidget {
     }
     try {
       final response = await Dio(BaseOptions(
-        baseUrl: 'http://YOUR_IP_ADRESS:80/api',
+        baseUrl: 'http://192.168.1.8:80/api',
       )).post('/login', data: {
         'email': emailController.text,
         'password': passwordController.text,
@@ -150,7 +150,7 @@ class LoginScreen extends StatelessWidget {
       print("token: ${response.data}");
       if (response.statusCode == 200) {
         GetStorage().write('token', response.data['token']);
-        Get.off(() => Navigationbar());
+        Get.off(() => bottomNavigation());
       }
     } on DioError catch (e) {
       print(e);

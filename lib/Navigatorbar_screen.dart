@@ -6,15 +6,15 @@ import 'Catigory_screen.dart';
 import 'HomeScreen.dart';
 import 'UserScreen.dart';
 
-class Navigationbar extends StatefulWidget {
+class bottomNavigation extends StatefulWidget {
   static const String screenRoute = 'Navigationbar';
-  Navigationbar({super.key});
+  bottomNavigation({super.key});
 
   @override
-  State<Navigationbar> createState() => _NavigationbarState();
+  State<bottomNavigation> createState() => _bottomNavigationState();
 }
 
-class _NavigationbarState extends State<Navigationbar> {
+class _bottomNavigationState extends State<bottomNavigation> {
   int currentindex = 0;
   final screens = [
     HomeScreen(),

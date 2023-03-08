@@ -38,6 +38,8 @@ dependencies:
   get: ^4.6.5
   get_storage: ^2.1.1
   dio: ^5.0.1
+  responsive_framework: ^0.2.0
+  searchbar_animation: ^0.0.4
 
 dev_dependencies:
   flutter_test:

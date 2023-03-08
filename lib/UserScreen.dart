@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 
 import 'login_screen.dart';
 
@@ -22,13 +23,10 @@ class UserScreen extends StatelessWidget {
       // ),
       body: Stack(
         children: [
-          Container(
-            width: 424.0,
-            child: SingleChildScrollView(
-              physics: const NeverScrollableScrollPhysics(),
-              child: Column(
-                children: const [],
-              ),
+          SingleChildScrollView(
+            physics: const NeverScrollableScrollPhysics(),
+            child: Column(
+              children: const [],
             ),
           ),
           Padding(
@@ -38,14 +36,7 @@ class UserScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Column(
-                  children: [
-                    // MaterialButton(
-                    //   onPressed: () {},
-                    //   child: const Icon(
-                    //     Icons.arrow_back_ios,
-                    //   ),
-                    // ),
-                  ],
+                  children: [],
                 ),
                 const SizedBox(
                   height: 50.0,
@@ -97,8 +88,6 @@ class UserScreen extends StatelessWidget {
                   height: 30.0,
                 ),
                 Container(
-                  height: 244.0,
-                  width: 300.0,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(
                       20.0,
@@ -130,13 +119,6 @@ class UserScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          // const Text(
-                          //   'Favorites',
-                          //   style: TextStyle(
-                          //     fontSize: 15.0,
-                          //     color: Colors.blue,
-                          //   ),
-                          // ),
                           const SizedBox(
                             width: 33.0,
                           ),
@@ -302,7 +284,8 @@ class UserScreen extends StatelessWidget {
                           ),
                           TextButton(
                             onPressed: () {
-                              Navigator.pushNamed(
+                              GetStorage().remove('token');
+                              Navigator.pushReplacementNamed(
                                   context, LoginScreen.screenRoute);
                             },
                             child: const Text(
@@ -316,13 +299,6 @@ class UserScreen extends StatelessWidget {
                           const SizedBox(
                             width: 23.0,
                           ),
-                          // MaterialButton(
-                          //   onPressed: () {},
-                          //   child: Icon(
-                          //     color: Colors.blue,
-                          //     Icons.arrow_forward,
-                          //   ),
-                          // ),
                         ],
                       ),
                     ],

@@ -46,7 +46,6 @@ class MotherBoardDetailsScreen extends StatelessWidget {
         padding: const EdgeInsets.all(20.0),
         child: SingleChildScrollView(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(
                 height: 33.0,

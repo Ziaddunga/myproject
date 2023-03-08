@@ -5,6 +5,7 @@ import 'package:myproject/psuViewAll_screen.dart';
 import 'package:myproject/ramDetails_screen.dart';
 
 import 'package:myproject/ramViewAll_screen.dart';
+import 'package:searchbar_animation/searchbar_animation.dart';
 
 import 'cpuDetails_Screen.dart';
 import 'cpuViewAll_screen.dart';
@@ -801,300 +802,249 @@ class _HomeScreenState extends State<HomeScreen> {
     // ),
   ];
 
+  final cn = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: SingleChildScrollView(
-          child: Container(
-            width: 353.0,
-            child: Column(
-              children: [
-                const SizedBox(
-                  height: 45.0,
-                ),
-                Row(
-                  children: [
-                    CircleAvatar(
-                        radius: 23.0,
-                        backgroundColor: Colors.grey[400],
-                        child: IconButton(
-                          onPressed: () {},
-                          icon: const Icon(
-                            Icons.menu,
-                            color: Colors.white,
-                          ),
-                        )),
-                    const SizedBox(
-                      width: 20.0,
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 45.0,
+              ),
+              SearchBarAnimation(
+                textEditingController: cn,
+                isOriginalAnimation: false,
+                buttonBorderColour: Colors.black45,
+                buttonWidget: const Icon(Icons.search),
+                onFieldSubmitted: (String value) {
+                  debugPrint('onFieldSubmitted value $value');
+                },
+                secondaryButtonWidget: const Icon(Icons.cancel),
+                trailingWidget: const Icon(Icons.search),
+              ),
+              const SizedBox(
+                height: 40.0,
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Text(
+                    'Create A High Performance Pc',
+                    style: TextStyle(
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.bold,
                     ),
-                    Container(
-                      width: 286.7,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(
-                          15.0,
+                  ),
+                  const SizedBox(
+                    height: 5.0,
+                  ),
+                  const Text(
+                    'Premium Parts will help you to create a high-performance PC that meets your specific requirements',
+                    style: TextStyle(
+                      fontSize: 13.0,
+                      color: Colors.grey,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 25.0,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text(
+                        'CPU',
+                        style: TextStyle(
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.bold,
                         ),
-                        color: Colors.grey[300],
                       ),
-                      padding: const EdgeInsets.all(
-                        0.0,
-                      ),
-                      child: Row(
-                        children: [
-                          IconButton(
-                            onPressed: () {},
-                            icon: const Icon(
-                              Icons.search,
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 10.0,
-                          ),
-                          const Text(
-                            'Search',
-                            style: TextStyle(
-                              fontSize: 15.0,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 40.0,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    const Text(
-                      'Create A High Performance Pc',
-                      style: TextStyle(
-                        fontSize: 18.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 5.0,
-                    ),
-                    const Text(
-                      'Premium Parts will help you to create a high-performance PC that meets your specific requirements',
-                      style: TextStyle(
-                        fontSize: 13.0,
-                        color: Colors.grey,
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 25.0,
-                    ),
-                    Row(
-                      children: [
-                        const Text(
-                          'CPU',
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pushNamed(
+                              context, CpuViewAllScreen.screenRoute);
+                        },
+                        child: const Text(
+                          'View all',
                           style: TextStyle(
-                            fontSize: 18.0,
-                            fontWeight: FontWeight.bold,
+                            fontSize: 15.0,
                           ),
                         ),
-                        const SizedBox(
-                          width: 246.7,
-                        ),
-                        TextButton(
-                          onPressed: () {
-                            Navigator.pushNamed(
-                                context, CpuViewAllScreen.screenRoute);
-                          },
-                          child: const Text(
-                            'View all',
-                            style: TextStyle(
-                              fontSize: 15.0,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 199.0,
-                      child: ListView.separated(
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) =>
-                            buildCpuItem(processors[index]),
-                        separatorBuilder: (context, index) => const SizedBox(
-                          width: 20.0,
-                        ),
-                        itemCount: processors.length,
                       ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 199.0,
+                    child: ListView.separated(
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) =>
+                          buildCpuItem(processors[index]),
+                      separatorBuilder: (context, index) => const SizedBox(
+                        width: 20.0,
+                      ),
+                      itemCount: processors.length,
                     ),
-                    const SizedBox(
-                      height: 20.0,
-                    ),
-                    Row(
-                      children: [
-                        const Text(
-                          'Mother Board',
+                  ),
+                  const SizedBox(
+                    height: 20.0,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text(
+                        'Mother Board',
+                        style: TextStyle(
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pushNamed(
+                              context, MotherBoardViewAllScreen.screenRoute);
+                        },
+                        child: const Text(
+                          'View all',
                           style: TextStyle(
-                            fontSize: 18.0,
-                            fontWeight: FontWeight.bold,
+                            fontSize: 15.0,
                           ),
                         ),
-                        const SizedBox(
-                          width: 172.7,
-                        ),
-                        TextButton(
-                          onPressed: () {
-                            Navigator.pushNamed(
-                                context, MotherBoardViewAllScreen.screenRoute);
-                          },
-                          child: const Text(
-                            'View all',
-                            style: TextStyle(
-                              fontSize: 15.0,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 199.0,
-                      child: ListView.separated(
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) =>
-                            buildMotherBoardItem(motherBoard[index]),
-                        separatorBuilder: (context, index) => const SizedBox(
-                          width: 20.0,
-                        ),
-                        itemCount: motherBoard.length,
                       ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 199.0,
+                    child: ListView.separated(
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) =>
+                          buildMotherBoardItem(motherBoard[index]),
+                      separatorBuilder: (context, index) => const SizedBox(
+                        width: 20.0,
+                      ),
+                      itemCount: motherBoard.length,
                     ),
-                    const SizedBox(
-                      height: 20.0,
-                    ),
-                    Row(
-                      children: [
-                        const Text(
-                          'Ram',
+                  ),
+                  const SizedBox(
+                    height: 20.0,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text(
+                        'Ram',
+                        style: TextStyle(
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pushNamed(
+                              context, RamViewAllScreen.screenRoute);
+                        },
+                        child: const Text(
+                          'View all',
                           style: TextStyle(
-                            fontSize: 18.0,
-                            fontWeight: FontWeight.bold,
+                            fontSize: 15.0,
                           ),
                         ),
-                        const SizedBox(
-                          width: 246.7,
-                        ),
-                        TextButton(
-                          onPressed: () {
-                            Navigator.pushNamed(
-                                context, RamViewAllScreen.screenRoute);
-                          },
-                          child: const Text(
-                            'View all',
-                            style: TextStyle(
-                              fontSize: 15.0,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 199.0,
-                      child: ListView.separated(
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) =>
-                            buildRamItem(ram[index]),
-                        separatorBuilder: (context, index) => const SizedBox(
-                          width: 20.0,
-                        ),
-                        itemCount: ram.length,
                       ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 199.0,
+                    child: ListView.separated(
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) => buildRamItem(ram[index]),
+                      separatorBuilder: (context, index) => const SizedBox(
+                        width: 20.0,
+                      ),
+                      itemCount: ram.length,
                     ),
-                    const SizedBox(
-                      height: 20.0,
-                    ),
-                    Row(
-                      children: [
-                        const Text(
-                          'Psu',
+                  ),
+                  const SizedBox(
+                    height: 20.0,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text(
+                        'Psu',
+                        style: TextStyle(
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pushNamed(
+                              context, PsuViewAllScreen.screenRoute);
+                        },
+                        child: const Text(
+                          'View all',
                           style: TextStyle(
-                            fontSize: 18.0,
-                            fontWeight: FontWeight.bold,
+                            fontSize: 15.0,
                           ),
                         ),
-                        const SizedBox(
-                          width: 246.7,
-                        ),
-                        TextButton(
-                          onPressed: () {
-                            Navigator.pushNamed(
-                                context, PsuViewAllScreen.screenRoute);
-                          },
-                          child: const Text(
-                            'View all',
-                            style: TextStyle(
-                              fontSize: 15.0,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 199.0,
-                      child: ListView.separated(
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) =>
-                            buildPsuItem(psu[index]),
-                        separatorBuilder: (context, index) => const SizedBox(
-                          width: 20.0,
-                        ),
-                        itemCount: psu.length,
                       ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 199.0,
+                    child: ListView.separated(
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) => buildPsuItem(psu[index]),
+                      separatorBuilder: (context, index) => const SizedBox(
+                        width: 20.0,
+                      ),
+                      itemCount: psu.length,
                     ),
-                    const SizedBox(
-                      height: 20.0,
-                    ),
-                    Row(
-                      children: [
-                        const Text(
-                          'Gpu',
+                  ),
+                  const SizedBox(
+                    height: 20.0,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text(
+                        'Gpu',
+                        style: TextStyle(
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pushNamed(
+                              context, GpuViewAllScreen.screenRoute);
+                        },
+                        child: const Text(
+                          'View all',
                           style: TextStyle(
-                            fontSize: 18.0,
-                            fontWeight: FontWeight.bold,
+                            fontSize: 15.0,
                           ),
                         ),
-                        const SizedBox(
-                          width: 246.7,
-                        ),
-                        TextButton(
-                          onPressed: () {
-                            Navigator.pushNamed(
-                                context, GpuViewAllScreen.screenRoute);
-                          },
-                          child: const Text(
-                            'View all',
-                            style: TextStyle(
-                              fontSize: 15.0,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 199.0,
-                      child: ListView.separated(
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) =>
-                            buildGpuItem(gpu[index]),
-                        separatorBuilder: (context, index) => const SizedBox(
-                          width: 20.0,
-                        ),
-                        itemCount: gpu.length,
                       ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 199.0,
+                    child: ListView.separated(
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) => buildGpuItem(gpu[index]),
+                      separatorBuilder: (context, index) => const SizedBox(
+                        width: 20.0,
+                      ),
+                      itemCount: gpu.length,
                     ),
-                  ],
-                ),
-              ],
-            ),
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
       ),
