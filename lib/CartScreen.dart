@@ -13,8 +13,6 @@ class CartView extends StatefulWidget {
 }
 
 class _CartViewState extends State<CartView> {
-  int counter = 1;
-
   // CartList cartList = CartList.instance();
   Map<String, String> product = {};
   @override
@@ -35,6 +33,7 @@ class _CartViewState extends State<CartView> {
                   itemCount: CartList.cartList.length,
                   itemBuilder: (_, index) {
                     product = CartList.cartList[index];
+                    int counter = 1;
                     return Row(
                       children: [
                         Container(
